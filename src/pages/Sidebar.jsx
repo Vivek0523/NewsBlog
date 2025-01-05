@@ -1,58 +1,50 @@
-import React from 'react'
-import 
-{BsCart3, BsGrid1X2Fill, BsFillArchiveFill, BsFillGrid3X3GapFill, BsPeopleFill, 
-  BsListCheck, BsMenuButtonWideFill, BsFillGearFill}
- from 'react-icons/bs'
+import React from "react";
+import { BsGrid1X2Fill } from "react-icons/bs";
+import { FaFilter, FaCalculator, FaCloudDownloadAlt } from "react-icons/fa";
+import { MdOutlineNewspaper } from "react-icons/md";
+import { TbMessageReport } from "react-icons/tb";
+import { GiNewspaper } from "react-icons/gi"; // Import the new icon
+import { Link } from "react-router-dom";
 
-function Sidebar({openSidebarToggle, OpenSidebar}) {
+function Sidebar({ openSidebarToggle, OpenSidebar }) {
   return (
-    <aside id="sidebar" className={openSidebarToggle ? "sidebar-responsive": ""}>
-        <div className='sidebar-title'>
-            <div className='sidebar-brand'>
-                <BsCart3  className='icon_header'/> SHOP
-            </div>
-            <span className='icon close_icon' onClick={OpenSidebar}>X</span>
+    <aside
+      id="sidebar"
+      className={`sidebar ${openSidebarToggle ? "sidebar-responsive" : ""}`}
+    >
+      {/* Sidebar title with updated logo */}
+      <div className="sidebar-title">
+        <div className="sidebar-brand">
+          <GiNewspaper className="icon_header" /> {/* Updated logo */}
+          NEWS PORTAL
         </div>
+      </div>
 
-        <ul className='sidebar-list'>
-            <li className='sidebar-list-item'>
-                <a href="">
-                    <BsGrid1X2Fill className='icon'/> Dashboard
-                </a>
-            </li>
-            <li className='sidebar-list-item'>
-                <a href="">
-                    <BsFillArchiveFill className='icon'/> Products
-                </a>
-            </li>
-            <li className='sidebar-list-item'>
-                <a href="">
-                    <BsFillGrid3X3GapFill className='icon'/> Categories
-                </a>
-            </li>
-            <li className='sidebar-list-item'>
-                <a href="">
-                    <BsPeopleFill className='icon'/> Customers
-                </a>
-            </li>
-            <li className='sidebar-list-item'>
-                <a href="">
-                    <BsListCheck className='icon'/> Inventory
-                </a>
-            </li>
-            <li className='sidebar-list-item'>
-                <a href="">
-                    <BsMenuButtonWideFill className='icon'/> Reports
-                </a>
-            </li>
-            <li className='sidebar-list-item'>
-                <a href="">
-                    <BsFillGearFill className='icon'/> Setting
-                </a>
-            </li>
-        </ul>
+      {/* Sidebar list */}
+      <ul className="sidebar-list">
+        <li className="sidebar-list-item">
+          <Link to="/dashboard/news-analytics">
+            <MdOutlineNewspaper className="icon" /> News Analytics
+          </Link>
+        </li>
+        <li className="sidebar-list-item">
+          <Link to="/dashboard/filter">
+            <FaFilter className="icon" /> Filter
+          </Link>
+        </li>
+        <li className="sidebar-list-item">
+          <Link to="/dashboard/payout">
+            <FaCalculator className="icon" /> Payout Calculator
+          </Link>
+        </li>
+        <li className="sidebar-list-item">
+          <Link to="/dashboard/export">
+            <FaCloudDownloadAlt className="icon" /> Export
+          </Link>
+        </li>
+      </ul>
     </aside>
-  )
+  );
 }
 
-export default Sidebar
+export default Sidebar;
